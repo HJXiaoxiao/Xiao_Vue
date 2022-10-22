@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+		computed和watch之间的区别：
+			1.computed能完成的功能，watch都可以完成。
+			2.watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作。
+		两个重要的小原则：
+			1.所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm 或 组件实例对象。
+			2.所有不被Vue所管理的函数（定时器的回调函数、ajax的回调函数等、Promise的回调函数），最好写成箭头函数，
+			  这样this的指向才是vm 或 组件实例对象。
+		-->
+    <div id="root">
+        姓:<input type="text" v-model="firstName"/>
+        <br/><br/>
+        名:<input type="text" v-model="lastName"/>
+        <br/><br/>
+        姓名：<span>{{fullName}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        var vm = new Vue({
+           el:'#root',
+           data:{
+               firstName:'张',
+               lastName: '三',
+               fullName:'张-三'
+           },
+           watch:{
+               firstName(newValue) {
+                    setTimeout(() => {
+                        // 如果写成function(){}的形式 this === window
+                        // js引擎调用的setTimeout函数，如果使用普通函数，则this则会指向window
+                        // 继承外部作用域的this，因此，该处要写箭头函数
+                        // console.log(this);  
+                        this.fullName = newValue + '-' + this.lastName;
+                    },1000)    // 改变1秒钟之后 fullName才变化
+               },
+               lastName(newValue) {
+                this.fullName = this.firstName + '-' + newValue;
+               }
+           }
+        });
+    </script>
+</body>
+</html>
