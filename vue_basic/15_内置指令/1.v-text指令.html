@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        我们学过的指令：
+            v-bind	: 单向绑定解析表达式, 可简写为 :xxx
+            v-model	: 双向数据绑定
+            v-for  	: 遍历数组/对象/字符串
+            v-on   	: 绑定事件监听, 可简写为@
+            v-if 	 	: 条件渲染（动态控制节点是否存存在）
+            v-else 	: 条件渲染（动态控制节点是否存存在）
+            v-show 	: 条件渲染 (动态控制节点是否展示)
+        v-text指令：
+            1.作用：向其所在的节点中渲染文本内容。 (纯文本渲染)
+            2.与插值语法的区别：v-text会替换掉节点中的内容，{{xx}}则不会。这里有点不太灵活
+        -->
+    <div id="root">
+        <div>{{name}}</div>
+        <!-- {{}} 为插值语法，里面可以写：
+            js表达式：一个表达式生成一个值，放在任何一个需要值的地方
+                     例如 (1).a (2) 1+b (3) demo(1) （4) x===y ? 1 : 0
+            js语句： if while for... -->
+        <div v-text="name"></div>
+        <!-- v-text会把name的值替换整个div里的内容 -->
+        <div v-text="name">你好</div>
+        <div v-text="str">你好</div>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        /*
+        * 注意:一个vue实例不可能去接管多个容器，如果有多个容器的情况，vue事例永远只接管第一个容器
+        * 不能多个vue实例同时来接管同一个容器，如果有多个的情况下永远是第一个vue实例来接管该容器
+        * vue实例与容器直接的对应关系是一对一的
+        */
+        new Vue({
+            el:'#root',
+            data:{
+                name:'Guet',
+                //v-text不会解析标签，而是直接将标签当纯文本解析
+                str:'<h3>你好，世界</h3>'
+            }
+        })
+    </script>
+</body>
+</html>
