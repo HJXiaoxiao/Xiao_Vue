@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <!-- <hello></hello>
+            <school></school> -->
+            <app></app>
+        </div>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        // 定义student组件
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h2>学生姓名：{{studentName}}</h2>
+                    <h2>年龄：{{address}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    studentName:'张三',
+                    address:18
+                }
+            }
+        })
+
+        // 定义school组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h2>学校名称：{{schoolName}}</h2>
+                    <h2>学校地址：{{address}}</h2>
+                    <student></student>
+                </div>
+            `,
+            data(){
+                return {
+                    schoolName:'Guet',
+                    address:'桂林'
+                }
+            },
+            components:{
+                student
+            }
+        })
+
+        // 定义hello组件
+        const hello = Vue.extend({
+            template:`
+                    <h1>{{msg}}</h1>
+            `,
+            data() {
+                return {
+                    msg:'你好啊！'
+                }
+            },
+        })
+
+        // 定义app组件,该组件在vm之下，在所有组件之上（与其直接连接的组件）
+        const app = Vue.extend({
+            template:`
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>
+            `,
+            components:{
+                school,
+                hello
+            }
+        })
+        new Vue({
+            // template: `<app></app>`,
+            el:'#root',
+            components:{
+                app:app
+            }
+        })
+    </script>
+</body>
+</html>
