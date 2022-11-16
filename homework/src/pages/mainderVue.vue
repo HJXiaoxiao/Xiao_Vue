@@ -10,19 +10,26 @@
         </template>
 
         <div class="div_head_title">
-          <div class="div_head_title_5">
+          <div class="div_head_title_1">
             <a href="#" target="_blank">
               <img src="http://www.cwca.org.cn/resource2/img/flfg.png">
             </a>
           </div>
-          <div class="div_head_title_6">
+          <div class="div_head_title_1">
             <a href="#" target="_blank">
               <img src="http://www.cwca.org.cn/resource2/img/zrbhq1.png">
             </a>
           </div>
-          <div class="div_head_title_5"><a href="#" target="_blank"><img src="http://www.cwca.org.cn/resource2/img/cbw.png"></a></div><br>
-          <div class="div_head_title_1"><a href="#" target="_blank"><img src="http://www.cwca.org.cn/resource2/img/zjsq.png"></a></div><br>
-          <div class="div_head_title_2"><a href="#" target="_blank"><img src="http://www.cwca.org.cn/resource2/img/flfg.png"></a></div><br>	
+          <div class="div_head_title_1">
+            <a href="#" target="_blank">
+              <img src="http://www.cwca.org.cn/resource2/img/cbw.png">
+            </a>
+          </div>
+          <div class="div_head_title_1">
+            <a href="#" target="_blank">
+              <img src="http://www.cwca.org.cn/resource2/img/zjsq.png">
+            </a>
+          </div>
 	      </div>
         <!-- page整个大页面 -->
         <div class="page" style="">
@@ -358,7 +365,7 @@ export default {
     margin: auto;
     margin-top: auto;
     margin-right: auto;
-    height: 540px;
+    height: 545px;
     line-height: 120px;
     margin-top: 120px;
     margin-right: 10px;
@@ -382,10 +389,10 @@ export default {
     -webkit-text-size-adjust: 100%;
   }
   .div_head_title div {
-    /* width: 100%; */
-    height: 163px;
-    padding: 15px;
-    margin-top: -150px;
+    width: 100%;
+    /* height: 163px; */
+    padding: 0px;
+    margin-top: 10px;
     /* float: right; */
     position: relative;
     /* width: 5%; */
@@ -403,7 +410,7 @@ export default {
     background-color: transparent;
   }
   .div_head_title div img {
-      width: 70px;
+    width: 70px;
     height: 115px;
     padding-top: 20px;
   }
